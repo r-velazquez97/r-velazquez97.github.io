@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function checkQuiz() {
+                //var score =0 to reset the quiz to its original clean format
+        var score = 0;
+
+        // --- radio buttons for question 1 and 2 ---
+        //document.queryselector looks in the document and queryselector is an action to match the answer inside the ()
+        var q1 = document.querySelector('input[name="q1"]:checked');
+        var q2 = document.querySelector('input[name="q2"]:checked');
+                // (q# = question number) (&&/AND for true) (score++ would be to add to the score for the result)
+        if (q1 && q1.value === "fruit") score++;
+        if (q2 && q2.value === "18") score++;
+
+        // checkboxes for question 3: correct checked answers shark, dolphin, jellyfish
+        //used q3_animal to have them more organized and the ("q3letter") is so the answer is the exact id
+        var q3_shark = document.getElementById("q3b").checked;
+        var q3_dolphin = document.getElementById("q3c").checked;
+        var q3_jellyfish = document.getElementById("q3e").checked;
+        
+        // Count total boxes checked for Q3 to ensure they user does not click extras
+        var q3Total = document.querySelectorAll('input[name="q3"]:checked').length;
+
+        if (q3_shark && q3_dolphin && q3_jellyfish && q3Total === 3) {
+            score++;
+        }
+
+        // --- checkbox for question 4: correct answers apples, oranges, peaches ---
+        var q4_apples = document.getElementById("q4a").checked;
+        var q4_oranges = document.getElementById("q4b").checked;
+        var q4_peaches = document.getElementById("q4c").checked;
+        
+        var q4Total = document.querySelectorAll('input[name="q4"]:checked').length;
+
+        if (q4_apples && q4_oranges && q4_peaches && q4Total === 3) {
+            score++;
+        }
+
+        // --- your result:  ---
+        document.getElementById("scoreDisplay").innerHTML = "Your Results: " + score + " / 4";
+    
+        }
+        </script>
+    </head>
+    <body>
+         <h2>Quiz</h2>
+         <form>
+            <!-- question 1: multiple choice -->
+            <p><strong>Question 1:</strong> What kind of food is an olive?</p>
+            <input type="radio" id="q1a" name="q1" value="vegetable"> <label for="q1a">A vegetable</label><br>
+            <input type="radio" id="q1b" name="q1" value="fruit"> <label for="q1b">A fruit</label><br>
+            <input type="radio" id="q1c" name="q1" value="desert"> <label for="q1c">A desert</label><br>
+            <hr>
+
+            <!-- question 2 multiple choice -->
+            <p><strong>Question 2:</strong> How many holes does a standard golf course have?</p>
+            <input type="radio" id="q2a" name="q2" value="18"> <label for="q2a">18</label><br>
+            <input type="radio" id="q2b" name="q2" value="27"> <label for="q2b">27</label><br>
+            <input type="radio" id="q2c" name="q2" value="9"> <label for="q2c">9</label><br>
+            <hr>
+
+            <!-- question 3: multiple answer -->
+            <p><strong>Question 3:</strong> Which of these animals live in the ocean? (Select 3)</p>
+            <input type="checkbox" id="q3b" name="q3" value="shark"> <label for="q3b">Shark</label><br>
+            <input type="checkbox" id="q3c" name="q3" value="dolphin"> <label for="q3c">Dolphin</label><br>
+            <input type="checkbox" id="q3d" name="q3" value="elephant"> <label for="q3d">Elephant</label><br>
+            <input type="checkbox" id="q3e" name="q3" value="jellyfish"> <label for="q3e">Jellyfish</label><br>
+            <hr>
+
+            <!-- question 4: multiple answer -->
+            <p><strong>Question 4:</strong> Which of these fruits grow on trees? (Select 3)</p>
+            <input type="checkbox" id="q4a" name="q4" value="apples"> <label for="q4a">Apples</label><br>
+            <input type="checkbox" id="q4b" name="q4" value="oranges"> <label for="q4b">Oranges</label><br>
+            <input type="checkbox" id="q4c" name="q4" value="peaches"> <label for="q4c">Peaches</label><br>
+            <input type="checkbox" id="q4d" name="q4" value="carrots"> <label for="q4d">Carrots</label><br>
+            <input type="button" value="Submit Quiz" onclick="checkQuiz()">
+         </form>
+
+         <h3 id="scoreDisplay"></h3>
+    </body>
+</html>
