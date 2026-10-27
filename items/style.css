@@ -1,0 +1,22 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffd3f4;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+    border-bottom: 4px solid ghostwhite;
+    padding-bottom: 15px;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+li {
+    font-size: 1.2rem;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
